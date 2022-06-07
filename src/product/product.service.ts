@@ -1,6 +1,7 @@
 import { Product } from './product.model';
-import { NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
+@Injectable()
 export class ProductService {
   private products: Product[] = [];
 

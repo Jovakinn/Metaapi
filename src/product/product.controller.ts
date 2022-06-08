@@ -19,7 +19,7 @@ export class ProductController {
     @Body('description') prodDescription: string,
     @Body('price') prodPrice: number,
   ): Promise<any> {
-    const generatedId = this.productService.insertProduct(
+    const generatedId = await this.productService.insertProduct(
       prodTitle,
       prodDescription,
       prodPrice,
@@ -29,7 +29,7 @@ export class ProductController {
 
   @Get()
   public async getAllProducts(): Promise<any> {
-    return this.productService.getAllProducts();
+    return await this.productService.getAllProducts();
   }
 
   @Get(':id')

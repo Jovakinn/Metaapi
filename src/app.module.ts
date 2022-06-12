@@ -8,10 +8,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
+import { TestController } from './test/controller/test.controller';
+import { TestService } from './test/service/test.service';
+import { TaskModule } from './test/modules/taskModule';
 
 @Module({
   imports: [
     ProductModule,
+    TaskModule,
     ConfigModule.forRoot({ isGlobal: true, envFilePath: './.env' }),
     GraphQLModule.forRoot({
       driver: ApolloDriver,
@@ -38,8 +42,9 @@ import { ApolloDriver } from '@nestjs/apollo';
       'mongodb+srv://jovakinn:root@cluster0.endkw.mongodb.net/?retryWrites=true&w=majority',
     ),
     UsersModule,
+    TaskModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, TestController],
+  providers: [AppService, TestService],
 })
 export class AppModule {}

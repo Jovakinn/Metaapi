@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -15,7 +13,6 @@ import { TaskModule } from './test/modules/taskModule';
 @Module({
   imports: [
     ProductModule,
-    TaskModule,
     ConfigModule.forRoot({ isGlobal: true, envFilePath: './.env' }),
     GraphQLModule.forRoot({
       driver: ApolloDriver,
@@ -44,7 +41,7 @@ import { TaskModule } from './test/modules/taskModule';
     UsersModule,
     TaskModule,
   ],
-  controllers: [AppController, TestController],
-  providers: [AppService, TestService],
+  controllers: [TestController],
+  providers: [TestService],
 })
 export class AppModule {}

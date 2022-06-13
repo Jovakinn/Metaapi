@@ -1,7 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UserService } from '../../services/user/user.service';
+import { UserService } from '../../services/user.service';
 import { UserEntity } from '../../entities/user.entity';
-import { CreateUserInput } from '../../input/create-user.input';
+import { CreateUserDto } from '../../input/create-user.dto';
 import { UpdateUserInput } from '../../input/update-user.input';
 
 @Resolver('User')
@@ -10,7 +10,7 @@ export class UserResolver {
 
   @Mutation(() => UserEntity)
   public async createUser(
-    @Args('createUser') createUserInput: CreateUserInput,
+    @Args('createUser') createUserInput: CreateUserDto,
   ): Promise<UserEntity> {
     return await this.userService.createUser(createUserInput);
   }

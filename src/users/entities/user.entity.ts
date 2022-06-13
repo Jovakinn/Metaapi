@@ -12,21 +12,25 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 export class UserEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
-  id: number;
+  public id?: number;
 
   @Field()
   @CreateDateColumn()
-  createdAt: Date;
+  public createdAt: Date;
 
   @Field()
   @UpdateDateColumn()
-  updatedAt: Date;
+  public updatedAt: Date;
 
   @Field()
-  @Column()
-  email: string;
+  @Column({ unique: true })
+  public email: string;
 
   @Field({ nullable: true })
   @Column({ nullable: false })
-  name: string;
+  public name: string;
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  public password: string;
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ITask } from '@src/test/interfaces/task.interface';
+import { ITask } from '../interfaces/task.interface';
 
 @Injectable()
 export class TestService {

@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { ITask } from '@src/test/interfaces/task.interface';
-import { TestService } from '@src/test/service/test.service';
+import { TestService } from '../service/test.service';
+import { ITask } from '../interfaces/task.interface';
 
 @Controller('test')
 export class TestController {

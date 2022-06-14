@@ -33,4 +33,5 @@ export class UserEntity {
   @Field({ nullable: true })
   @Column({ nullable: true })
   public password: string;
+  isTwoFactorAuthenticationEnabled: boolean;
 }

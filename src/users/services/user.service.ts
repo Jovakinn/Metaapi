@@ -55,4 +55,10 @@ export class UserService {
     await this.userRepository.save(newUser);
     return newUser;
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async setCurrentRefreshToken(refreshToken: any, id: number) {}
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async removeRefreshToken(id: number) {}
 }

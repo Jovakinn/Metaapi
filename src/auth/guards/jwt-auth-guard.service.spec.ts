@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LocalStrategy } from './local.strategy.service';
+import { JwtAuthGuard } from './jwt-auth-guard.service';
 
-describe('Local.JwtService', () => {
-  let service: LocalStrategy;
+describe('JwtAuthGuardService', () => {
+  let service: JwtAuthGuard;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [LocalStrategy],
+      providers: [JwtAuthGuard],
     }).compile();
 
-    service = module.get<LocalStrategy>(LocalStrategy);
+    service = module.get<JwtAuthGuard>(JwtAuthGuard);
   });
 
   it('should be defined', () => {

@@ -39,15 +39,15 @@ export class UserService {
     return await this.getOneUser(updateUserInput.id);
   }
 
-  public async getByEmail(email: string) {
+  public async getByEmail(email: string): Promise<UserEntity> {
     const user = await this.userRepository.findBy({ email: email });
-    if (user) {
-      return user;
+    if (!user) {
+      throw new HttpException(
+        'User with this email does not exist',
+        HttpStatus.NOT_FOUND,
+      );
     }
-    throw new HttpException(
-      'User with this email does not exist',
-      HttpStatus.NOT_FOUND,
-    );
+    return user.at(0);
   }
 
   public async create(userData: CreateUserDto) {

@@ -10,6 +10,8 @@ import { TestController } from './test/controller/test.controller';
 import { TestService } from './test/service/test.service';
 import { TaskModule } from './test/modules/taskModule';
 import * as Joi from '@hapi/joi';
+import { APP_FILTER } from '@nestjs/core';
+import { ExceptionsLoggerFilter } from './exceptions/exceptionsLogger';
 
 @Module({
   imports: [
@@ -89,6 +91,12 @@ import * as Joi from '@hapi/joi';
     }),
   ],
   controllers: [TestController],
-  providers: [TestService],
+  providers: [
+    TestService,
+    {
+      provide: APP_FILTER,
+      useClass: ExceptionsLoggerFilter,
+    },
+  ],
 })
 export class AppModule {}

@@ -2,7 +2,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '../input/create-user.dto';
-import { UpdateUserInput } from '../input/update-user.input';
 import { UserEntity } from '../entities/user.entity';
 
 @Injectable()
@@ -29,9 +28,12 @@ export class UserService {
     return id;
   }
 
-  public async updateUser(
-    updateUserInput: UpdateUserInput,
-  ): Promise<UserEntity> {
+  public async updateUser(updateUserInput: {
+    password: undefined;
+    name: undefined;
+    id: undefined;
+    email: undefined;
+  }): Promise<UserEntity> {
     await this.userRepository.update(
       { id: updateUserInput.id },
       { ...updateUserInput },
@@ -55,10 +57,4 @@ export class UserService {
     await this.userRepository.save(newUser);
     return newUser;
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  async setCurrentRefreshToken(refreshToken: any, id: number) {}
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  async removeRefreshToken(id: number) {}
 }

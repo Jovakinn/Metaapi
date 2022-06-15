@@ -1,6 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { TestService } from '../service/test.service';
 import { ITask } from '../interfaces/task.interface';
+import { CreateTaskDto } from '../dto/create-task';
 
 @Controller('test')
 export class TestController {
@@ -16,8 +26,9 @@ export class TestController {
     return await this.testService.getTaskById(id);
   }
 
+  @UsePipes(new ValidationPipe())
   @Post()
-  public async createTask(@Body('task') task: string): Promise<ITask> {
+  public async createTask(@Body() task: CreateTaskDto): Promise<ITask> {
     return await this.testService.createTask(task);
   }
 

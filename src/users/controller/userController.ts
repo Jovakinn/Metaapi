@@ -17,7 +17,7 @@ export class UserController {
   }
 
   @Get(':email')
-  public async getUserBuEmail(@Param('email') email: string): Promise<UserEntity[]> {
+  public async getUserByEmail(@Param('email') email: string): Promise<UserEntity> {
     return await this.userService.getByEmail(email);
   }
 

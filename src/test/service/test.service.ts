@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Task } from '../entities/test.entity';
 import { ITask } from '../interfaces/task.interface';
 
 @Injectable()
@@ -16,9 +17,10 @@ export class TestService {
     return this.tasks.find((t) => t.id === +id);
   }
 
-  public async createTask(task: ITask): Promise<ITask> {
-    this.tasks.push(task);
-    return task;
+  public async createTask(task: string): Promise<ITask> {
+    const newTask = new Task(task);
+    this.tasks.push(newTask);
+    return newTask;
   }
 
   public async deleteTask(id: number): Promise<void> {

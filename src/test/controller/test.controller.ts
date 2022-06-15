@@ -17,7 +17,7 @@ export class TestController {
   }
 
   @Post()
-  public async createTask(@Body('task') task: ITask): Promise<ITask> {
+  public async createTask(@Body('task') task: string): Promise<ITask> {
     return await this.testService.createTask(task);
   }
 

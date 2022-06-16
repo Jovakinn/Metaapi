@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
-import { TaskModule } from './test/modules/taskModule';
+import { TaskModule } from './task/modules/task.module';
 
 @Module({
   imports: [
